@@ -43,7 +43,24 @@ def crearUsuario():
     return jsonify({"mensaje": "usuario registrado correctamente"})
 
 
+#RUTA PARA MOSTRAR TODOS USUARIOS REGISTRADOS DENTRO DEL SISTEMA
+@app.route('/usuario', methods=["GET"])
+def getUsuarios():
+    return jsonify({"datos": crudUsuario.readUsers()})
 
+
+#RUTA PARA ACTUALIZAR LOS USUARIOS MEDIANTE EL ID.
+@app.route('/usuario', methods=["PUT"])
+def updateUsuario():
+    id_u = request.json["id"]
+    nombre = request.json["nombre"] 
+    correo = request.json["correo"]
+    pwd = request.json["pwd"]
+    edad = request.json["edad"]
+    resultado = crudUsuario.updateUser(id_u,nombre,correo,pwd,edad)
+    if resultado:
+        return jsonify({"mensaje": "usuario" + nombre + "FUE MODIFICADO CON ÉXITO"})
+    return jsonify({"mensaje": "USUARIO NO EXISTE EN LA BASE DE DATOS"})
 
 
 

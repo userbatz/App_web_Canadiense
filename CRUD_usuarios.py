@@ -18,3 +18,25 @@ class CRUD_Usuarios:
         nuevoUsuario = Usuario(id,correo,pwd,nombre,edad)
         self.usuarios.append(nuevoUsuario)
         return nuevoUsuario.dump()
+
+
+    #MÉTODO PARA MOSTRAR USUARIOS:
+    def readUsers(self):
+        usuariosJSON = []
+        for usuario in self.usuarios:
+            usuariosJSON.append(usuario.dump())
+        return usuariosJSON
+
+
+
+    #METODO PARA MODIFCAR USUARIOS EN BASE A SU ID.
+    def updateUser(self, id,nombre,correo,pwd,edad):
+        for usuario in self.usuarios:
+            if usuario.id == id:
+                usuario.nombre = nombre
+                usuario.correo = correo
+                usuario.pwd = pwd
+                usuario.edad = edad
+                return True
+        return False
+        
