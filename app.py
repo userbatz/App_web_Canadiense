@@ -63,6 +63,24 @@ def updateUsuario():
     return jsonify({"mensaje": "USUARIO NO EXISTE EN LA BASE DE DATOS"})
 
 
+#LOGIN DE USUARIOS:
+@app.route('/auth', methods=["POST"])
+def login():
+    correo = request.json["correo"]
+    pwd = request.json["pwd"]
+    resultado = crudUsuario.loginUser(correo,pwd)
+    if resultado is None:
+        return jsonify({"mensaje": "USUARIO INCORRECTO"}), 400
+    resultado.pop('pwd')
+    return jsonify(resultado),200
+
+
+    #codigos HTTP:
+    # ERROR: 400
+    # CORRECTO: 200
+    # RECUERSO CREADO: 201
+    # PETICION INCORRECTA: 2400
+    # NO SE ENCONTRÓ EL RECURSO: 404
 
 
 

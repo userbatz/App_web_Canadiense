@@ -40,3 +40,10 @@ class CRUD_Usuarios:
                 return True
         return False
         
+
+    #METODO PARA LOGIN DEL USUARIO.
+    def loginUser(self,correo,pwd):
+        for usuario in self.usuarios:
+            if usuario.correo == correo and usuario.pwd == pwd:
+                return usuario.dump()
+        return None
