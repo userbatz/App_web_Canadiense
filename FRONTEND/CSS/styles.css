@@ -1,4 +1,10 @@
 body {
     background: #48C9B0;
     background: linear-gradient(to left, #0d9c80, #48C9B0);
+    color: white ;
+}
+
+.bg {
+    background-image: url("https://miro.medium.com/max/800/0*QanHBYUBhuBNAIfZ.jpg");
+    background-position: center center;
 }
